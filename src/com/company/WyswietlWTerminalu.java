@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class WyswietlWTerminalu {
@@ -18,16 +19,16 @@ public class WyswietlWTerminalu {
 
         Kalkulator kalkulator = new Kalkulator();
         WczytajURL obj = WczytajURL.getInstance();
-        obj.odswiez();
+
+        KolekcjaWalut kolekcja = new KolekcjaWalut(obj.odswiez());
+        ArrayList<Waluta> waluty = kolekcja.getWaluty();
 
         boolean zapetlaj = true;
 
         while (zapetlaj) {
 
-            obj.odswiez();
-
-            for (int i = 0; i < WczytajURL.waluty.length; i++) {
-                System.out.println(obj.waluty[i].wyswietl());
+            for (int i = 0; i < waluty.size(); i++) {
+                System.out.println(waluty.get(i).wyswietl());
             }
 
             try {
@@ -35,9 +36,9 @@ public class WyswietlWTerminalu {
                 System.out.println("Podaj kod pierwszej waluty:");
                 String nazwaWaluty1 = scan1.nextLine().toUpperCase();
 
-                for (int i = 0; i < obj.waluty.length; i++) {
-                    if (nazwaWaluty1.equals(obj.waluty[i].getKodWaluty())) {
-                        kalkulator.setWaluta1(obj.waluty[i]);
+                for (int i = 0; i < waluty.size(); i++) {
+                    if (nazwaWaluty1.equals(waluty.get(i).getKodWaluty())) {
+                        kalkulator.setWaluta1(waluty.get(i));
                     }
                 }
 
@@ -55,9 +56,9 @@ public class WyswietlWTerminalu {
                     continue;
                 }
 
-                for (int i = 0; i < obj.waluty.length; i++) {
-                    if (nazwaWaluty2.equals(obj.waluty[i].getKodWaluty())) {
-                        kalkulator.setWaluta2(obj.waluty[i]);
+                for (int i = 0; i < waluty.size(); i++) {
+                    if (nazwaWaluty2.equals(waluty.get(i).getKodWaluty())) {
+                        kalkulator.setWaluta2(waluty.get(i));
                     }
                 }
 

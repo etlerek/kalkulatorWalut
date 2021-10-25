@@ -20,9 +20,7 @@ public class Waluta implements IWaluta {
     }
 
     @Override
-    public String getNazwaWaluty() {
-        return nazwaWaluty;
-    }
+    public String getNazwaWaluty() { return nazwaWaluty; }
 
     @Override
     public Integer getPrzelicznik() {

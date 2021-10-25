@@ -12,20 +12,21 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
 public class WczytajURL {
 
     //tworzenie singletona
     static WczytajURL wczytajURL = null;
-    static Waluta[] waluty = null;
 
     //konstruktor
     private WczytajURL() {
 
     }
 
-    public void odswiez(){
+    public ArrayList<Waluta> odswiez(){
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         try {
             dbf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
@@ -52,7 +53,7 @@ public class WczytajURL {
         Objects.requireNonNull(doc).getDocumentElement().normalize();
 
         NodeList list = doc.getElementsByTagName("pozycja");
-        waluty = new Waluta[list.getLength()];
+        Waluta[] waluty = new Waluta[list.getLength()];;
 
         for (int i = 0; i < list.getLength(); i++) {
 
@@ -68,6 +69,7 @@ public class WczytajURL {
                 waluty[i] = new Waluta(i, nazwaWaluty, przelicznik, kodWaluty, kursSredni);
             }
         }
+        return new ArrayList<Waluta>(Arrays.asList(waluty));
     }
 
     public static WczytajURL getInstance(){
