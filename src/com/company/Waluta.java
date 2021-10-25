@@ -1,41 +1,47 @@
 package com.company;
-public class Waluta {
+
+public class Waluta implements IWaluta {
     private Integer idWaluty;
     private String nazwaWaluty;
-    private String przelicznik;
+    private Integer przelicznik;
     private String kodWaluty;
-    private String kursSredni;
+    private Double kursSredni;
 
     public Waluta(Integer idWaluty, String nazwaWaluty, String przelicznik, String kodWaluty, String kursSredni) {
         this.idWaluty = idWaluty;
         this.nazwaWaluty = nazwaWaluty;
-        this.przelicznik = przelicznik;
+        this.przelicznik = Integer.parseInt(przelicznik);
         this.kodWaluty = kodWaluty;
-        this.kursSredni = kursSredni;
-    }
-
-    public String wyswietl(){
-        return getIdWaluty() + " " + getKodWaluty() + " " + getNazwaWaluty() + " " + getKursSredni() + " " + getPrzelicznik();
-    }
-
-    public String getNazwaWaluty() {
-        return nazwaWaluty;
+        this.kursSredni = Double.parseDouble(kursSredni.replace(",","."));
     }
 
     public Integer getIdWaluty() {
         return idWaluty;
     }
 
-    public String getPrzelicznik() {
+    @Override
+    public String getNazwaWaluty() {
+        return nazwaWaluty;
+    }
+
+    @Override
+    public Integer getPrzelicznik() {
         return przelicznik;
     }
 
+    @Override
     public String getKodWaluty() {
         return kodWaluty;
     }
 
-    public String getKursSredni() {
+    @Override
+    public Double getKursSredni() {
         return kursSredni;
+    }
+
+    @Override
+    public String wyswietl(){
+        return getIdWaluty() + " " + getKodWaluty() + " " + getNazwaWaluty() + " " + getKursSredni() + " " + getPrzelicznik();
     }
 
 }

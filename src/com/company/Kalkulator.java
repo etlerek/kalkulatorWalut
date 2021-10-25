@@ -12,9 +12,7 @@ public class Kalkulator {
         this.waluta2 = waluta2;
     }
 
-    public Waluta getWaluta1() {
-        return waluta1;
-    }
+    public Waluta getWaluta1() { return waluta1; }
     public Waluta getWaluta2() {
         return waluta2;
     }
@@ -23,6 +21,11 @@ public class Kalkulator {
         System.out.println(waluta1.wyswietl());
         System.out.println(waluta2.wyswietl());
 
+    }
+
+    public double licz(double ilosc){
+        Double wynik = (waluta1.getKursSredni() * waluta2.getPrzelicznik())/ (waluta2.getKursSredni()* waluta1.getPrzelicznik()) * ilosc;
+        return Math.round(wynik*100.0)/100.0;
     }
 
 }

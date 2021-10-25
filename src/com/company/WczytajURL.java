@@ -21,7 +21,9 @@ public class WczytajURL {
     static Waluta[] waluty = null;
 
     //konstruktor
-    private WczytajURL() {}
+    private WczytajURL() {
+
+    }
 
     public void odswiez(){
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
