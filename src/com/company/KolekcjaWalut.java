@@ -6,7 +6,7 @@ public class KolekcjaWalut {
 
     private ArrayList<Waluta> waluty = null;
 
-    KolekcjaWalut(ArrayList<Waluta> waluty){
+    public KolekcjaWalut(ArrayList<Waluta> waluty){
         this.waluty = waluty;
     }
 

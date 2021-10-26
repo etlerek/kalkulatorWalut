@@ -53,7 +53,7 @@ public class WczytajURL {
         Objects.requireNonNull(doc).getDocumentElement().normalize();
 
         NodeList list = doc.getElementsByTagName("pozycja");
-        Waluta[] waluty = new Waluta[list.getLength()];;
+        Waluta[] waluty = new Waluta[list.getLength()+1];;
 
         for (int i = 0; i < list.getLength(); i++) {
 
@@ -66,9 +66,10 @@ public class WczytajURL {
                 String kodWaluty = element.getElementsByTagName("kod_waluty").item(0).getTextContent();
                 String kursSredni = element.getElementsByTagName("kurs_sredni").item(0).getTextContent();
 
-                waluty[i] = new Waluta(i, nazwaWaluty, przelicznik, kodWaluty, kursSredni);
+                waluty[i] = new Waluta(nazwaWaluty, przelicznik, kodWaluty, kursSredni);
             }
         }
+        waluty[waluty.length-1] = new Waluta("Złoty", "1", "PLN", "1.0");
         return new ArrayList<Waluta>(Arrays.asList(waluty));
     }
 

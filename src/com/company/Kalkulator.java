@@ -18,8 +18,8 @@ public class Kalkulator {
     }
 
     public void print(){
-        System.out.println(waluta1.wyswietl());
-        System.out.println(waluta2.wyswietl());
+        System.out.println(waluta1.wyswietlKursy());
+        System.out.println(waluta2.wyswietlKursy());
 
     }
 

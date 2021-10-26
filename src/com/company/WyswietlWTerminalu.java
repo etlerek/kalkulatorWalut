@@ -27,13 +27,17 @@ public class WyswietlWTerminalu {
 
         while (zapetlaj) {
 
-            for (int i = 0; i < waluty.size(); i++) {
-                System.out.println(waluty.get(i).wyswietl());
+            for (Waluta waluta : waluty) {
+                System.out.println(waluta.wyswietlKursy());
+            }
+            System.out.println("Kody walut: ");
+            for (Waluta waluta : waluty) {
+                System.out.print(waluta.wyswietlKody());
             }
 
             try {
                 Scanner scan1 = new Scanner(System.in);
-                System.out.println("Podaj kod pierwszej waluty:");
+                System.out.println("\nPodaj kod pierwszej waluty:");
                 String nazwaWaluty1 = scan1.nextLine().toUpperCase();
 
                 for (int i = 0; i < waluty.size(); i++) {

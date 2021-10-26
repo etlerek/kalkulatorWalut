@@ -1,0 +1,73 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+interface IWaluta{
+    wyswietlKursy(): String
+    wyswietlKody(): String
+}
+
+
+class Main{
+
+}
+
+
+class Waluta {
+    - nazwaWaluty: String
+    - przelicznik: Integer
+    - kodWaluty: String
+    - kursSredni: Double
+
+    +Waluta(nazwaWaluty: String, przelicznik: String, kodWaluty: String, kursSredni:String)
+    +getNazwaWaluty(): String
+    +getPrzelicznik(): Integer
+    +getKodWaluty(): String
+    +getKursSredni(): Double
+    +<<override>>wyswietlKursy(): String
+    +<<override>>wyswietlKody(): String
+}
+
+class Kalkulator {
+
+    - waluta1: Waluta
+    - waluta2: Waluta
+
+
+    + setWaluta1(waluta1: Waluta): void
+    + setWaluta2(waluta2: Waluta ): void
+
+    + getWaluta1(): Waluta
+    + getWaluta2(): Waluta
+
+    + print(): void
+    + licz(ilosc: double): double
+}
+
+class KolekcjaWalut{
+    - waluty: ArrayList<Waluta>
+
+    + KolekcjaWalut(waluty: ArrayList<Waluta>)
+
+    + getWaluty(): ArrayList<Waluta>
+    + setWaluty(waluty: ArrayList<Waluta>): void
+}
+
+class WczytajURL{
+
+    - WczytajURL()
+    + odswiez(): ArrayList<Waluta>
+    + getInstance(): static WczytajURL
+}
+
+class WyswietlWTerminalu{
+
+    + zamkniecie(): boolean
+    +piszWTerminalu(): void
+}
+
+
+
+
+IWaluta --|> Waluta
+
+@enduml
