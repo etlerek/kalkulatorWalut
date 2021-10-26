@@ -1,6 +1,8 @@
 @startuml
 'https://plantuml.com/sequence-diagram
 
+skinparam classAttributeIconSize 0
+
 interface IWaluta{
     wyswietlKursy(): String
     wyswietlKody(): String
@@ -65,9 +67,15 @@ class WyswietlWTerminalu{
     +piszWTerminalu(): void
 }
 
+Main ..> WyswietlWTerminalu
+WyswietlWTerminalu ..> WczytajURL
+WyswietlWTerminalu ..> KolekcjaWalut
+WyswietlWTerminalu ..> Kalkulator
+WyswietlWTerminalu ..> Waluta
+WczytajURL ..> Waluta
+Waluta --> Kalkulator
+Waluta --* KolekcjaWalut
 
-
-
-IWaluta --|> Waluta
+IWaluta <|-- Waluta
 
 @enduml
